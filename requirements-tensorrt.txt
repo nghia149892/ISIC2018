@@ -1,0 +1,2 @@
+# Optional; TensorRT 10 APIs are used by the standalone runtime/builder.
+tensorrt>=10.10,<11
