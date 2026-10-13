@@ -1,0 +1,127 @@
+{
+  "python": "3.11.9",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "cpu": "Intel64 Family 6 Model 140 Stepping 1, GenuineIntel",
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "torchvision": "0.26.0+cu128",
+    "numpy": "2.4.6",
+    "onnx": "1.23.1",
+    "onnxruntime": "1.30.0",
+    "tensorrt": null
+  },
+  "cuda": "12.8",
+  "gpu": "NVIDIA GeForce GTX 1650",
+  "created_at_utc": "2026-10-12T01:59:43.892561+00:00",
+  "configuration": {
+    "mode": "single-image",
+    "image_count": 1,
+    "images": [
+      "ISIC2018\\ISIC2018_Task3_Test_Input\\ISIC_0034524.jpg"
+    ],
+    "checkpoint": "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\weights\\best_model_withKD.pth",
+    "checkpoint_sha256": "841475d03bde58e9809e96ba0c8f9b9c4cb352e8409067d7d8efffab93dd0d12",
+    "onnx": "ISIC2018\\results\\smoke_resnet18.onnx",
+    "onnx_sha256": "891aeb368da70c43d164a7e019b718742a0e16f445f9430019fce003656caabf",
+    "onnx_external_data_sha256": null,
+    "ground_truth": null,
+    "warmup": 1,
+    "runs": 2,
+    "threads": 1,
+    "batch_sizes": [
+      1
+    ],
+    "class_labels": [
+      "AKIEC",
+      "BCC",
+      "BKL",
+      "DF",
+      "MEL",
+      "NV",
+      "VASC"
+    ],
+    "engines": {
+      "fp32": {
+        "path": "ISIC2018\\results\\smoke_resnet18_fp32.engine",
+        "sha256": "4fe8dba5a61ad17a65bde75d378c1b26a2e93a649026fc5ca1b29751ede2db9f"
+      }
+    }
+  },
+  "results": [
+    {
+      "batch_size": 1,
+      "evaluated_images": 1,
+      "backends": {
+        "PyTorch CPU": {
+          "latency": {
+            "mean_batch_ms": 78.51264999771956,
+            "median_batch_ms": 78.51264999771956,
+            "p95_batch_ms": 85.23632500000531,
+            "images_per_second": 12.73680101269089,
+            "ms_per_image": 78.51264999771956,
+            "timed_batches": 2,
+            "timed_images": 2
+          },
+          "agreement_with_pytorch": {
+            "max_abs_diff": 0.0,
+            "predicted_class_agreement": 1.0,
+            "allclose": true
+          },
+          "details": {
+            "checkpoint": "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\weights\\best_model_withKD.pth",
+            "threads": 1
+          },
+          "speedup_vs_pytorch_cpu": 1.0
+        },
+        "ONNX Runtime CPU": {
+          "latency": {
+            "mean_batch_ms": 34.290799987502396,
+            "median_batch_ms": 34.290799987502396,
+            "p95_batch_ms": 34.46305998950265,
+            "images_per_second": 29.16234093005877,
+            "ms_per_image": 34.290799987502396,
+            "timed_batches": 2,
+            "timed_images": 2
+          },
+          "agreement_with_pytorch": {
+            "max_abs_diff": 2.384185791015625e-06,
+            "predicted_class_agreement": 1.0,
+            "allclose": true
+          },
+          "details": {
+            "model": "ISIC2018\\results\\smoke_resnet18.onnx",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "threads": 1
+          },
+          "speedup_vs_pytorch_cpu": 2.2896126665558763
+        },
+        "TensorRT FP32 GPU": {
+          "latency": {
+            "mean_batch_ms": 3.426499999477528,
+            "median_batch_ms": 3.426499999477528,
+            "p95_batch_ms": 3.535040000861045,
+            "images_per_second": 291.8429885167021,
+            "ms_per_image": 3.426499999477528,
+            "timed_batches": 2,
+            "timed_images": 2
+          },
+          "agreement_with_pytorch": {
+            "max_abs_diff": 9.5367431640625e-07,
+            "predicted_class_agreement": 1.0,
+            "allclose": true
+          },
+          "details": {
+            "engine": "ISIC2018\\results\\smoke_resnet18_fp32.engine",
+            "min_batch": 1,
+            "opt_batch": 1,
+            "max_batch": 1,
+            "timing": "host input to host output, including allocation and CUDA copies"
+          },
+          "speedup_vs_pytorch_cpu": 22.913366411700324
+        }
+      }
+    }
+  ]
+}

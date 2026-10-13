@@ -1,0 +1,761 @@
+{
+  "python": "3.11.9",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "cpu": "Intel64 Family 6 Model 140 Stepping 1, GenuineIntel",
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "torchvision": "0.26.0+cu128",
+    "numpy": "2.4.6",
+    "onnx": "1.23.1",
+    "onnxruntime": "1.30.0",
+    "tensorrt": null
+  },
+  "cuda": "12.8",
+  "gpu": "NVIDIA GeForce GTX 1650",
+  "created_at_utc": "2026-10-12T01:51:52.628615+00:00",
+  "configuration": {
+    "mode": "folder",
+    "image_count": 12,
+    "images": [
+      "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\ISIC2018_Task3_Test_Input\\ISIC_0034524.jpg",
+      "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\ISIC2018_Task3_Test_Input\\ISIC_0034525.jpg",
+      "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\ISIC2018_Task3_Test_Input\\ISIC_0034526.jpg",
+      "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\ISIC2018_Task3_Test_Input\\ISIC_0034527.jpg",
+      "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\ISIC2018_Task3_Test_Input\\ISIC_0034528.jpg",
+      "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\ISIC2018_Task3_Test_Input\\ISIC_0034529.jpg",
+      "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\ISIC2018_Task3_Test_Input\\ISIC_0034530.jpg",
+      "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\ISIC2018_Task3_Test_Input\\ISIC_0034531.jpg",
+      "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\ISIC2018_Task3_Test_Input\\ISIC_0034532.jpg",
+      "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\ISIC2018_Task3_Test_Input\\ISIC_0034533.jpg",
+      "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\ISIC2018_Task3_Test_Input\\ISIC_0034534.jpg",
+      "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\ISIC2018_Task3_Test_Input\\ISIC_0034535.jpg"
+    ],
+    "checkpoint": "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\weights\\best_model_withKD.pth",
+    "checkpoint_sha256": "841475d03bde58e9809e96ba0c8f9b9c4cb352e8409067d7d8efffab93dd0d12",
+    "onnx": "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\weights\\resnet18.onnx",
+    "onnx_sha256": "6ba0f89a936bf98e60cf9d137fea717292b0e2fae12c9c47074d5fc955755c64",
+    "ground_truth": "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\ISIC2018_Task3_Test_GroundTruth\\ISIC2018_Task3_Test_GroundTruth.csv",
+    "warmup": 1,
+    "runs": null,
+    "threads": 1,
+    "batch_sizes": [
+      1,
+      4,
+      8
+    ],
+    "class_labels": [
+      "AKIEC",
+      "BCC",
+      "BKL",
+      "DF",
+      "MEL",
+      "NV",
+      "VASC"
+    ],
+    "engines": {
+      "fp32": {
+        "path": "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\weights\\resnet18_fp32.engine",
+        "sha256": "c57c25dee7e73e020436ae6efc07a447aafb4437dbd4cd7ac66f310a87af729c"
+      },
+      "fp16": {
+        "path": "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\weights\\resnet18_fp16.engine",
+        "sha256": "2ee232bd40d61ca4fe64ba87ba1b655def7f7d5a0bc9a043f88324d3cf7faa3c"
+      }
+    }
+  },
+  "results": [
+    {
+      "batch_size": 1,
+      "evaluated_images": 12,
+      "backends": {
+        "PyTorch CPU": {
+          "latency": {
+            "mean_batch_ms": 76.55216667141455,
+            "median_batch_ms": 76.11645001452416,
+            "p95_batch_ms": 86.42751501320163,
+            "images_per_second": 13.062987547985514,
+            "ms_per_image": 76.55216667141455,
+            "timed_batches": 12,
+            "timed_images": 12
+          },
+          "agreement_with_pytorch": {
+            "max_abs_diff": 0.0,
+            "predicted_class_agreement": 1.0,
+            "allclose": true
+          },
+          "details": {
+            "checkpoint": "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\weights\\best_model_withKD.pth",
+            "threads": 1
+          },
+          "classification": {
+            "accuracy": 0.9166666666666666,
+            "macro_f1": 0.3915966386554622,
+            "per_class_recall": {
+              "AKIEC": {
+                "support": 0,
+                "recall": null
+              },
+              "BCC": {
+                "support": 0,
+                "recall": null
+              },
+              "BKL": {
+                "support": 3,
+                "recall": 0.6666666666666666
+              },
+              "DF": {
+                "support": 0,
+                "recall": null
+              },
+              "MEL": {
+                "support": 1,
+                "recall": 1.0
+              },
+              "NV": {
+                "support": 8,
+                "recall": 1.0
+              },
+              "VASC": {
+                "support": 0,
+                "recall": null
+              }
+            }
+          },
+          "speedup_vs_pytorch_cpu": 1.0
+        },
+        "ONNX Runtime CPU": {
+          "latency": {
+            "mean_batch_ms": 47.041591664310545,
+            "median_batch_ms": 44.60155000560917,
+            "p95_batch_ms": 60.66695500630885,
+            "images_per_second": 21.257784114449485,
+            "ms_per_image": 47.041591664310545,
+            "timed_batches": 12,
+            "timed_images": 12
+          },
+          "agreement_with_pytorch": {
+            "max_abs_diff": 1.0371208190917969e-05,
+            "predicted_class_agreement": 1.0,
+            "allclose": true
+          },
+          "details": {
+            "model": "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\weights\\resnet18.onnx",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "threads": 1
+          },
+          "classification": {
+            "accuracy": 0.9166666666666666,
+            "macro_f1": 0.3915966386554622,
+            "per_class_recall": {
+              "AKIEC": {
+                "support": 0,
+                "recall": null
+              },
+              "BCC": {
+                "support": 0,
+                "recall": null
+              },
+              "BKL": {
+                "support": 3,
+                "recall": 0.6666666666666666
+              },
+              "DF": {
+                "support": 0,
+                "recall": null
+              },
+              "MEL": {
+                "support": 1,
+                "recall": 1.0
+              },
+              "NV": {
+                "support": 8,
+                "recall": 1.0
+              },
+              "VASC": {
+                "support": 0,
+                "recall": null
+              }
+            }
+          },
+          "speedup_vs_pytorch_cpu": 1.6273294325942855
+        },
+        "TensorRT FP32 GPU": {
+          "latency": {
+            "mean_batch_ms": 3.571641665378896,
+            "median_batch_ms": 3.5169500042684376,
+            "p95_batch_ms": 3.951810002035927,
+            "images_per_second": 279.98329443105416,
+            "ms_per_image": 3.571641665378896,
+            "timed_batches": 12,
+            "timed_images": 12
+          },
+          "agreement_with_pytorch": {
+            "max_abs_diff": 7.867813110351562e-06,
+            "predicted_class_agreement": 1.0,
+            "allclose": true
+          },
+          "details": {
+            "engine": "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\weights\\resnet18_fp32.engine",
+            "opt_batch": 1,
+            "timing": "host input to host output, including allocation and CUDA copies"
+          },
+          "classification": {
+            "accuracy": 0.9166666666666666,
+            "macro_f1": 0.3915966386554622,
+            "per_class_recall": {
+              "AKIEC": {
+                "support": 0,
+                "recall": null
+              },
+              "BCC": {
+                "support": 0,
+                "recall": null
+              },
+              "BKL": {
+                "support": 3,
+                "recall": 0.6666666666666666
+              },
+              "DF": {
+                "support": 0,
+                "recall": null
+              },
+              "MEL": {
+                "support": 1,
+                "recall": 1.0
+              },
+              "NV": {
+                "support": 8,
+                "recall": 1.0
+              },
+              "VASC": {
+                "support": 0,
+                "recall": null
+              }
+            }
+          },
+          "speedup_vs_pytorch_cpu": 21.43332782049779
+        },
+        "TensorRT FP16 GPU": {
+          "latency": {
+            "mean_batch_ms": 2.385824998782482,
+            "median_batch_ms": 2.372500006458722,
+            "p95_batch_ms": 2.7114849843201227,
+            "images_per_second": 419.14222564953974,
+            "ms_per_image": 2.385824998782482,
+            "timed_batches": 12,
+            "timed_images": 12
+          },
+          "agreement_with_pytorch": {
+            "max_abs_diff": 0.04881024360656738,
+            "predicted_class_agreement": 1.0,
+            "allclose": false
+          },
+          "details": {
+            "engine": "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\weights\\resnet18_fp16.engine",
+            "opt_batch": 1,
+            "timing": "host input to host output, including allocation and CUDA copies"
+          },
+          "classification": {
+            "accuracy": 0.9166666666666666,
+            "macro_f1": 0.3915966386554622,
+            "per_class_recall": {
+              "AKIEC": {
+                "support": 0,
+                "recall": null
+              },
+              "BCC": {
+                "support": 0,
+                "recall": null
+              },
+              "BKL": {
+                "support": 3,
+                "recall": 0.6666666666666666
+              },
+              "DF": {
+                "support": 0,
+                "recall": null
+              },
+              "MEL": {
+                "support": 1,
+                "recall": 1.0
+              },
+              "NV": {
+                "support": 8,
+                "recall": 1.0
+              },
+              "VASC": {
+                "support": 0,
+                "recall": null
+              }
+            }
+          },
+          "speedup_vs_pytorch_cpu": 32.086245516951216
+        }
+      }
+    },
+    {
+      "batch_size": 4,
+      "evaluated_images": 12,
+      "backends": {
+        "PyTorch CPU": {
+          "latency": {
+            "mean_batch_ms": 268.032533339768,
+            "median_batch_ms": 266.3444000063464,
+            "p95_batch_ms": 276.42125001584645,
+            "images_per_second": 14.923561517547018,
+            "ms_per_image": 67.008133334942,
+            "timed_batches": 3,
+            "timed_images": 12
+          },
+          "agreement_with_pytorch": {
+            "max_abs_diff": 0.0,
+            "predicted_class_agreement": 1.0,
+            "allclose": true
+          },
+          "details": {
+            "checkpoint": "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\weights\\best_model_withKD.pth",
+            "threads": 1
+          },
+          "classification": {
+            "accuracy": 0.9166666666666666,
+            "macro_f1": 0.3915966386554622,
+            "per_class_recall": {
+              "AKIEC": {
+                "support": 0,
+                "recall": null
+              },
+              "BCC": {
+                "support": 0,
+                "recall": null
+              },
+              "BKL": {
+                "support": 3,
+                "recall": 0.6666666666666666
+              },
+              "DF": {
+                "support": 0,
+                "recall": null
+              },
+              "MEL": {
+                "support": 1,
+                "recall": 1.0
+              },
+              "NV": {
+                "support": 8,
+                "recall": 1.0
+              },
+              "VASC": {
+                "support": 0,
+                "recall": null
+              }
+            }
+          },
+          "speedup_vs_pytorch_cpu": 1.0
+        },
+        "ONNX Runtime CPU": {
+          "latency": {
+            "mean_batch_ms": 179.43883332191035,
+            "median_batch_ms": 174.34939998202026,
+            "p95_batch_ms": 193.46144000592176,
+            "images_per_second": 22.291718720796993,
+            "ms_per_image": 44.85970833047759,
+            "timed_batches": 3,
+            "timed_images": 12
+          },
+          "agreement_with_pytorch": {
+            "max_abs_diff": 1.049041748046875e-05,
+            "predicted_class_agreement": 1.0,
+            "allclose": true
+          },
+          "details": {
+            "model": "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\weights\\resnet18.onnx",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "threads": 1
+          },
+          "classification": {
+            "accuracy": 0.9166666666666666,
+            "macro_f1": 0.3915966386554622,
+            "per_class_recall": {
+              "AKIEC": {
+                "support": 0,
+                "recall": null
+              },
+              "BCC": {
+                "support": 0,
+                "recall": null
+              },
+              "BKL": {
+                "support": 3,
+                "recall": 0.6666666666666666
+              },
+              "DF": {
+                "support": 0,
+                "recall": null
+              },
+              "MEL": {
+                "support": 1,
+                "recall": 1.0
+              },
+              "NV": {
+                "support": 8,
+                "recall": 1.0
+              },
+              "VASC": {
+                "support": 0,
+                "recall": null
+              }
+            }
+          },
+          "speedup_vs_pytorch_cpu": 1.4937264603081877
+        },
+        "TensorRT FP32 GPU": {
+          "latency": {
+            "mean_batch_ms": 9.228500013705343,
+            "median_batch_ms": 9.144300012849271,
+            "p95_batch_ms": 9.580440007266589,
+            "images_per_second": 433.43988666192314,
+            "ms_per_image": 2.3071250034263358,
+            "timed_batches": 3,
+            "timed_images": 12
+          },
+          "agreement_with_pytorch": {
+            "max_abs_diff": 7.867813110351562e-06,
+            "predicted_class_agreement": 1.0,
+            "allclose": true
+          },
+          "details": {
+            "engine": "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\weights\\resnet18_fp32.engine",
+            "opt_batch": 1,
+            "timing": "host input to host output, including allocation and CUDA copies"
+          },
+          "classification": {
+            "accuracy": 0.9166666666666666,
+            "macro_f1": 0.3915966386554622,
+            "per_class_recall": {
+              "AKIEC": {
+                "support": 0,
+                "recall": null
+              },
+              "BCC": {
+                "support": 0,
+                "recall": null
+              },
+              "BKL": {
+                "support": 3,
+                "recall": 0.6666666666666666
+              },
+              "DF": {
+                "support": 0,
+                "recall": null
+              },
+              "MEL": {
+                "support": 1,
+                "recall": 1.0
+              },
+              "NV": {
+                "support": 8,
+                "recall": 1.0
+              },
+              "VASC": {
+                "support": 0,
+                "recall": null
+              }
+            }
+          },
+          "speedup_vs_pytorch_cpu": 29.043997718124295
+        },
+        "TensorRT FP16 GPU": {
+          "latency": {
+            "mean_batch_ms": 5.409066662347565,
+            "median_batch_ms": 5.448899988550693,
+            "p95_batch_ms": 5.638889994588681,
+            "images_per_second": 739.4991131915497,
+            "ms_per_image": 1.3522666655868913,
+            "timed_batches": 3,
+            "timed_images": 12
+          },
+          "agreement_with_pytorch": {
+            "max_abs_diff": 0.04881024360656738,
+            "predicted_class_agreement": 1.0,
+            "allclose": false
+          },
+          "details": {
+            "engine": "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\weights\\resnet18_fp16.engine",
+            "opt_batch": 1,
+            "timing": "host input to host output, including allocation and CUDA copies"
+          },
+          "classification": {
+            "accuracy": 0.9166666666666666,
+            "macro_f1": 0.3915966386554622,
+            "per_class_recall": {
+              "AKIEC": {
+                "support": 0,
+                "recall": null
+              },
+              "BCC": {
+                "support": 0,
+                "recall": null
+              },
+              "BKL": {
+                "support": 3,
+                "recall": 0.6666666666666666
+              },
+              "DF": {
+                "support": 0,
+                "recall": null
+              },
+              "MEL": {
+                "support": 1,
+                "recall": 1.0
+              },
+              "NV": {
+                "support": 8,
+                "recall": 1.0
+              },
+              "VASC": {
+                "support": 0,
+                "recall": null
+              }
+            }
+          },
+          "speedup_vs_pytorch_cpu": 49.55245517781073
+        }
+      }
+    },
+    {
+      "batch_size": 8,
+      "evaluated_images": 12,
+      "backends": {
+        "PyTorch CPU": {
+          "latency": {
+            "mean_batch_ms": 366.31179999676533,
+            "median_batch_ms": 366.31179999676533,
+            "p95_batch_ms": 466.196140012471,
+            "images_per_second": 16.3794887307834,
+            "ms_per_image": 61.051966666127555,
+            "timed_batches": 2,
+            "timed_images": 12
+          },
+          "agreement_with_pytorch": {
+            "max_abs_diff": 0.0,
+            "predicted_class_agreement": 1.0,
+            "allclose": true
+          },
+          "details": {
+            "checkpoint": "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\weights\\best_model_withKD.pth",
+            "threads": 1
+          },
+          "classification": {
+            "accuracy": 0.9166666666666666,
+            "macro_f1": 0.3915966386554622,
+            "per_class_recall": {
+              "AKIEC": {
+                "support": 0,
+                "recall": null
+              },
+              "BCC": {
+                "support": 0,
+                "recall": null
+              },
+              "BKL": {
+                "support": 3,
+                "recall": 0.6666666666666666
+              },
+              "DF": {
+                "support": 0,
+                "recall": null
+              },
+              "MEL": {
+                "support": 1,
+                "recall": 1.0
+              },
+              "NV": {
+                "support": 8,
+                "recall": 1.0
+              },
+              "VASC": {
+                "support": 0,
+                "recall": null
+              }
+            }
+          },
+          "speedup_vs_pytorch_cpu": 1.0
+        },
+        "ONNX Runtime CPU": {
+          "latency": {
+            "mean_batch_ms": 238.69929999636952,
+            "median_batch_ms": 238.69929999636952,
+            "p95_batch_ms": 307.18831000704085,
+            "images_per_second": 25.136227882072784,
+            "ms_per_image": 39.783216666061584,
+            "timed_batches": 2,
+            "timed_images": 12
+          },
+          "agreement_with_pytorch": {
+            "max_abs_diff": 1.049041748046875e-05,
+            "predicted_class_agreement": 1.0,
+            "allclose": true
+          },
+          "details": {
+            "model": "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\weights\\resnet18.onnx",
+            "providers": [
+              "CPUExecutionProvider"
+            ],
+            "threads": 1
+          },
+          "classification": {
+            "accuracy": 0.9166666666666666,
+            "macro_f1": 0.3915966386554622,
+            "per_class_recall": {
+              "AKIEC": {
+                "support": 0,
+                "recall": null
+              },
+              "BCC": {
+                "support": 0,
+                "recall": null
+              },
+              "BKL": {
+                "support": 3,
+                "recall": 0.6666666666666666
+              },
+              "DF": {
+                "support": 0,
+                "recall": null
+              },
+              "MEL": {
+                "support": 1,
+                "recall": 1.0
+              },
+              "NV": {
+                "support": 8,
+                "recall": 1.0
+              },
+              "VASC": {
+                "support": 0,
+                "recall": null
+              }
+            }
+          },
+          "speedup_vs_pytorch_cpu": 1.5346161467684936
+        },
+        "TensorRT FP32 GPU": {
+          "latency": {
+            "mean_batch_ms": 44.384399996488355,
+            "median_batch_ms": 44.384399996488355,
+            "p95_batch_ms": 57.1085999821662,
+            "images_per_second": 135.18263174617013,
+            "ms_per_image": 7.397399999414726,
+            "timed_batches": 2,
+            "timed_images": 12
+          },
+          "agreement_with_pytorch": {
+            "max_abs_diff": 7.867813110351562e-06,
+            "predicted_class_agreement": 1.0,
+            "allclose": true
+          },
+          "details": {
+            "engine": "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\weights\\resnet18_fp32.engine",
+            "opt_batch": 1,
+            "timing": "host input to host output, including allocation and CUDA copies"
+          },
+          "classification": {
+            "accuracy": 0.9166666666666666,
+            "macro_f1": 0.3915966386554622,
+            "per_class_recall": {
+              "AKIEC": {
+                "support": 0,
+                "recall": null
+              },
+              "BCC": {
+                "support": 0,
+                "recall": null
+              },
+              "BKL": {
+                "support": 3,
+                "recall": 0.6666666666666666
+              },
+              "DF": {
+                "support": 0,
+                "recall": null
+              },
+              "MEL": {
+                "support": 1,
+                "recall": 1.0
+              },
+              "NV": {
+                "support": 8,
+                "recall": 1.0
+              },
+              "VASC": {
+                "support": 0,
+                "recall": null
+              }
+            }
+          },
+          "speedup_vs_pytorch_cpu": 8.253165527206574
+        },
+        "TensorRT FP16 GPU": {
+          "latency": {
+            "mean_batch_ms": 24.604400008684024,
+            "median_batch_ms": 24.604400008684024,
+            "p95_batch_ms": 31.300850000116043,
+            "images_per_second": 243.8588219132482,
+            "ms_per_image": 4.100733334780671,
+            "timed_batches": 2,
+            "timed_images": 12
+          },
+          "agreement_with_pytorch": {
+            "max_abs_diff": 0.04881024360656738,
+            "predicted_class_agreement": 1.0,
+            "allclose": false
+          },
+          "details": {
+            "engine": "D:\\ST4I_PROJECT\\SmartSupervisor\\ISIC2018\\weights\\resnet18_fp16.engine",
+            "opt_batch": 1,
+            "timing": "host input to host output, including allocation and CUDA copies"
+          },
+          "classification": {
+            "accuracy": 0.9166666666666666,
+            "macro_f1": 0.3915966386554622,
+            "per_class_recall": {
+              "AKIEC": {
+                "support": 0,
+                "recall": null
+              },
+              "BCC": {
+                "support": 0,
+                "recall": null
+              },
+              "BKL": {
+                "support": 3,
+                "recall": 0.6666666666666666
+              },
+              "DF": {
+                "support": 0,
+                "recall": null
+              },
+              "MEL": {
+                "support": 1,
+                "recall": 1.0
+              },
+              "NV": {
+                "support": 8,
+                "recall": 1.0
+              },
+              "VASC": {
+                "support": 0,
+                "recall": null
+              }
+            }
+          },
+          "speedup_vs_pytorch_cpu": 14.888060666688762
+        }
+      }
+    }
+  ]
+}

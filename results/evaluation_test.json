@@ -1,0 +1,47 @@
+{
+  "checkpoint": "ISIC2018\\weights\\best_model_withKD.pth",
+  "split": "test",
+  "class_labels": [
+    "AKIEC",
+    "BCC",
+    "BKL",
+    "DF",
+    "MEL",
+    "NV",
+    "VASC"
+  ],
+  "metrics": {
+    "accuracy": 0.8161375661375662,
+    "macro_f1": 0.6962242113097723,
+    "per_class_recall": {
+      "AKIEC": {
+        "support": 43,
+        "recall": 0.5581395348837209
+      },
+      "BCC": {
+        "support": 93,
+        "recall": 0.6451612903225806
+      },
+      "BKL": {
+        "support": 217,
+        "recall": 0.6543778801843319
+      },
+      "DF": {
+        "support": 44,
+        "recall": 0.5681818181818182
+      },
+      "MEL": {
+        "support": 171,
+        "recall": 0.5380116959064327
+      },
+      "NV": {
+        "support": 909,
+        "recall": 0.9592959295929593
+      },
+      "VASC": {
+        "support": 35,
+        "recall": 0.5428571428571428
+      }
+    }
+  }
+}

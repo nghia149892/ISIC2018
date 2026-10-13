@@ -1,0 +1,12 @@
+{
+  "onnx_sha256": "891aeb368da70c43d164a7e019b718742a0e16f445f9430019fce003656caabf",
+  "onnx_external_data_sha256": null,
+  "precision": "fp32",
+  "tensorrt_version": "10.14.1.48.post1",
+  "gpu": "NVIDIA GeForce GTX 1650",
+  "profile": {
+    "min": 1,
+    "opt": 1,
+    "max": 1
+  }
+}
