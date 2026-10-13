@@ -16,7 +16,10 @@ __pycache__/
 *.pyd
 
 # --- 4. Dữ liệu  ---
-data/
+/data/
+
+# Local reference code for AI-assisted development; not published to GitHub.
+/notebooks/
 
 # --- 5. Weights & Artifacts  ---
 weights/*.pth
