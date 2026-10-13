@@ -21,15 +21,3 @@ __pycache__/
 # Local reference code for AI-assisted development; not published to GitHub.
 /notebooks/
 
-# --- 5. Weights & Artifacts  ---
-weights/*.pth
-weights/*.onnx
-weights/*.onnx.data
-weights/*.engine
-weights/**/*.pth
-weights/**/*.onnx
-weights/**/*.onnx.data
-weights/**/*.engine
-results/
-weights/ort_tensorrt_cache/
-weights/**/*.json
